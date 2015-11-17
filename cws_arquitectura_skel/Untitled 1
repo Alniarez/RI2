@@ -1,0 +1,11 @@
+Gateway -> finders solo ejecutan consultas
+
+En las implementaciones de business no tenemos logica solo activar el mapeado
+
+Mapeador
+
+transient->persistent = persist(obj)
+detached->persistent = merge(obj)
+persistent->transient = remove(obj)
+find = si tienes id te encuentra obj en base de datos
+query -> createQuery(); 
