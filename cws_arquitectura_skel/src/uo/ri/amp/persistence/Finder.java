@@ -1,7 +1,6 @@
 package uo.ri.amp.persistence;
 
 import uo.ri.amp.persistence.finder.*;
-import uo.ri.amp.persistence.model.Vehiculo;
 
 public class Finder {
 

@@ -12,7 +12,7 @@ import uo.ri.amp.persistence.util.Jpa;
 
 import java.util.LinkedList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 /**
  * Created by Jorge.
@@ -41,9 +41,8 @@ public class UpdateGrade implements Command {
         c = Jpa.getManager().merge(c);
 
         // Modoficar contenidos
-        List<ContenidoCurso> contenidoCursos = new LinkedList<>();
-        for(ContenidoCurso cc : c.getContenidoCurso())
-            contenidoCursos.add(cc);
+        List<ContenidoCurso> contenidoCursos = c.getContenidoCurso().stream()
+                .collect(Collectors.toCollection(LinkedList::new));
 
         for(ContenidoCurso cc : contenidoCursos){
             Jpa.getManager().remove(cc);
@@ -80,7 +79,8 @@ public class UpdateGrade implements Command {
             porcentajeAcumulado += integer;
         }
         if(porcentajeAcumulado!= 100)
-            throw new BusinessException("La suma de los porcetajes debe ser 100.");
+            throw new BusinessException(
+                    "La suma de los porcetajes debe ser 100.");
 
     }
 

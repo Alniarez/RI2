@@ -15,23 +15,26 @@ import java.util.List;
 
 public class GenerateCertificates implements Command {
 
-    private Mecanico mecanico;
-    private TipoVehiculo tipoVehiculo;
-
-	@Override
+    @Override
 	public Object execute() throws BusinessException {
         List<ExpertoDTO> expertos = Finder.experto.findExpertosSinCertificar();
         if(expertos==null)
             return "No se crado ningún certificado.";
-        StringBuilder sb = new StringBuilder();
-        for(ExpertoDTO expertoDTO : expertos){
-            tipoVehiculo = Finder.tipoVehiculo.findById(expertoDTO.getIdTipoVehiculo());
-            mecanico = Finder.mecanico.findById(expertoDTO.getIdMecanico());
-            sb.append("Se va a añadir el experto "+mecanico.getNombre()+" en "+tipoVehiculo.getNombre()+".\n");
-            Jpa.getManager().persist(new Experto(new Date(), tipoVehiculo, mecanico));
-        }
 
+        StringBuilder sb = new StringBuilder();
+
+        for(ExpertoDTO expertoDTO : expertos){
+            TipoVehiculo tipoVehiculo = Finder.tipoVehiculo.findById(
+                    expertoDTO.getIdTipoVehiculo());
+            Mecanico mecanico = Finder.mecanico.findById(expertoDTO.getIdMecanico());
+            sb.append("Se va a añadir el experto ")
+                    .append(mecanico.getNombre())
+                    .append(" en ")
+                    .append(tipoVehiculo.getNombre())
+                    .append(".\n");
+            Jpa.getManager().persist(
+                    new Experto(new Date(), tipoVehiculo, mecanico));
+        }
         return sb.toString();
     }
-
 }

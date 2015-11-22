@@ -21,9 +21,9 @@ public class Cliente {
 	private String apellidos;
 	private String dni;
 	
-	@OneToMany(mappedBy="cliente") private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
+	@OneToMany(mappedBy="cliente") private Set<Vehiculo> vehiculos = new HashSet<>();
 	
-	@OneToMany(mappedBy="cliente", cascade = {CascadeType.PERSIST}) private Set<MedioPago> mediosPago = new HashSet<MedioPago>();
+	@OneToMany(mappedBy="cliente", cascade = {CascadeType.PERSIST}) private Set<MedioPago> mediosPago = new HashSet<>();
 
 	public Cliente(String dni) {
 		super();

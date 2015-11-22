@@ -1,6 +1,5 @@
 package uo.ri.amp.business.impl.command.admin.attendance;
 
-
 import uo.ri.amp.business.impl.command.Command;
 import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.AsistenciaDTO;
@@ -25,11 +24,14 @@ public class ListAttendance implements Command {
 	public Object execute() throws BusinessException {
 		comprobar();
 
-        List<Asistencia> asistencias = Finder.asistencia.findByCurso(codigoCurso);
+        List<Asistencia> asistencias;
+        asistencias = Finder.asistencia.findByCurso(codigoCurso);
 
         TableBuilder tb = new TableBuilder();
-        tb.addRow("ID Mecnánico", "Fecha de inicio", "Fecha de finalización", "t% de asistencia", "Calificación");
-        tb.addRow("----------", "----------", "----------", "----------", "----------");
+        tb.addRow("ID Mecnánico", "Fecha de inicio", "Fecha de finalización",
+                "t% de asistencia", "Calificación");
+        tb.addRow("----------", "----------", "----------",
+                "----------", "----------");
         for(Asistencia a : asistencias)
             tb.addRow(
                     a.getMecanico().getId()+"",
@@ -44,5 +46,4 @@ public class ListAttendance implements Command {
         if(Finder.curso.findByCodigo(codigoCurso)==null)
             throw new BusinessException("El curso no existe.");
     }
-
 }

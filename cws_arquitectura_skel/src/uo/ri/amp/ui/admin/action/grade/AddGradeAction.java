@@ -19,17 +19,17 @@ public class AddGradeAction implements Action {
     public void execute() throws BusinessException {
 
         // Pedir datos
-        String codigo = leerCadena("CÃ³digo de curso");
+        String codigo = leerCadena("Código de curso");
         String nombre = leerCadena("Nombre");
-        String descripcion = leerCadena("Descripcion");
+        String descripcion = leerCadena("Descripción");
         int horasTotales = leerEntero("Horas totales");
 
         List<String> tiposVehiculo = new LinkedList<>();
         List<Integer> horasVehiculo = new LinkedList<>();
 
         do {
-            tiposVehiculo.add(leerCadena("Tipo de vehÃ­culo (nombre)"));
-            horasVehiculo.add(leerEntero("Porcentaje de horas dedicadas al vehÃ­culo"));
+            tiposVehiculo.add(leerCadena("Tipo de vehículo (nombre)"));
+            horasVehiculo.add(leerEntero("Porcentaje de horas dedicadas al vehículo"));
         } while (masTipos());
 
         //Generar modelo
@@ -49,6 +49,6 @@ public class AddGradeAction implements Action {
     }
 
     private boolean masTipos(){
-        return leerCadena("Â¿AÃ±adir mÃ¡s tipos? (s/n)").equalsIgnoreCase("s");
+        return leerCadena("¿Añadir más tipos? (s/n)").equalsIgnoreCase("s");
     }
 }

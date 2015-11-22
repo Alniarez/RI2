@@ -65,7 +65,8 @@ public class AsistenciaFinder {
 
     public HorasAsistenciaDTO findHoursByMechanicA(long id) {
         List<HorasAsistenciaDTO> horas = new LinkedList<>();
-        List resultList = Jpa.getManager()
+        @SuppressWarnings("rawtypes")
+		List resultList = Jpa.getManager()
                 .createNamedQuery("Asistencia.hourByMechanicA")
                 .setParameter("idMecanico", id)
                 .getResultList();
@@ -80,7 +81,8 @@ public class AsistenciaFinder {
 
     public List<HoraTipoDTO> findHoursByMechanicB(long id) {
         List<HoraTipoDTO> horas = new LinkedList<>();
-        List resultList = Jpa.getManager()
+        @SuppressWarnings("rawtypes")
+		List resultList = Jpa.getManager()
                 .createNamedQuery("Asistencia.hourByMechanicB")
                 .setParameter("idMecanico", id)
                 .getResultList();
@@ -96,7 +98,8 @@ public class AsistenciaFinder {
     public List<HorasMecanicoTipoDTO> findHoursByType() {
         List<HorasMecanicoTipoDTO> horas = new LinkedList<>();
         Query q = Jpa.getManager().createNamedQuery("Asistencia.hoursByType");
-        List resultList = q.getResultList();
+        @SuppressWarnings("rawtypes")
+		List resultList = q.getResultList();
 
         for (Object iterator : resultList) {
             Object[] row = (Object[]) iterator;

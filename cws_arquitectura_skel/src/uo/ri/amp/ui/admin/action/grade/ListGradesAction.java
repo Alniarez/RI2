@@ -12,7 +12,7 @@ public class ListGradesAction implements Action{
     public void execute() throws Exception {
 
         // Procesar y mostrar resultados
-        System.out.print(ServiceFactory.getAdminService().listGrades());
+    	println(ServiceFactory.getAdminService().listGrades());
 
     }
 }

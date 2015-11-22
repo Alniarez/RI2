@@ -5,10 +5,6 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
         version="2.0">
 
-    <named-query name="Cosa">
-        <query>select sum(a.curso.nHoras), sum(a.curso.nHoras*a.porcentaje) from Asistencia a where a.mecanico.id = :id</query>
-    </named-query>
-
     <!-- Curso -->
     <named-query name="Curso.findAll">
         <query>select c from Curso c</query>
@@ -39,7 +35,6 @@
     <named-query name="Asistencia.findbyCurso">
         <query>select a from Asistencia a where a.curso.codigo = :codigo order by a.fechaFin</query>
     </named-query>
-
 
     <named-query name="Asistencia.hourByMechanicA">
         <query>
@@ -91,6 +86,11 @@
             order by
                 cc.tipoVehiculo.id
         </query>
+    </named-query>
+
+    <!-- Vehiculo -->
+    <named-query name="Vehiculo.getByMatricula">
+        <query>select v from Vehiculo v where v.matricula = :matricula</query>
     </named-query>
 
     <!-- TipoVehiculo -->
@@ -148,6 +148,19 @@
                                         e.tipoVehiculo.id = o.tipoVehiculo.id
                                 )
         </query>
+    </named-query>
+
+    <named-query name="Experto.findByTipo">
+        <query>select e from Experto e where e.tipoVehiculo.id = :idTipo</query>
+    </named-query>
+
+    <named-query name="Experto.findExpertMechanicByTipo">
+        <query>select e.mecanico from Experto e where e.tipoVehiculo.id = :idTipo and e.mecanico.id = :idMecanico</query>
+    </named-query>
+
+    <!-- Averia -->
+    <named-query name="Averia.findOne">
+        <query>select a from Averia a where a.fecha = :fecha and a.vehiculo.matricula = :matricula</query>
     </named-query>
 
     <!--

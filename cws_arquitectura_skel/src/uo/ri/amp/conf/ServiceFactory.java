@@ -6,7 +6,7 @@ import uo.ri.amp.business.impl.AdminServiceImpl;
 import uo.ri.amp.business.impl.ForemanServiceImpl;
 
 /**
- * Created by Jorge on 17/11/2015.
+ * Created by Jorge.
  */
 public class ServiceFactory {
 

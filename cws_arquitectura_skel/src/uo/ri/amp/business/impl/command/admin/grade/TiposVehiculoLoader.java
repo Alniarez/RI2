@@ -13,12 +13,14 @@ import java.util.List;
  */
 public class TiposVehiculoLoader {
 
-    static public List<TipoVehiculo> load(CursoDTO curso) throws BusinessException {
+    static public List<TipoVehiculo> load(CursoDTO curso)
+            throws BusinessException {
         LinkedList<TipoVehiculo> tipoVehiculos = new LinkedList<>();
         for (String tv : curso.getVehiculos()) {
             TipoVehiculo aux = Finder.tipoVehiculo.findByNombre(tv);
             if (aux == null)
-                throw new BusinessException("No existse el tipo de vehículo " + tv+".");
+                throw new BusinessException("No existse el tipo de vehículo "
+                        + tv+".");
             else {
                 tipoVehiculos.add(aux);
             }

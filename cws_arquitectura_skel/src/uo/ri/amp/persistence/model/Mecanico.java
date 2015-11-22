@@ -15,13 +15,13 @@ public class Mecanico {
 	private String nombre;
 	private String dni;
 	
-	@OneToMany(mappedBy="mecanico") private Set<Averia> averias = new HashSet<Averia>();
+	@OneToMany(mappedBy="mecanico") private Set<Averia> averias = new HashSet<>();
 	
-	@OneToMany(mappedBy="mecanico") private Set<Intervencion> intervenciones = new HashSet<Intervencion>();
+	@OneToMany(mappedBy="mecanico") private Set<Intervencion> intervenciones = new HashSet<>();
 	
-	@OneToMany(mappedBy="mecanico") private Set<Asistencia> asistencias = new HashSet<Asistencia>();
+	@OneToMany(mappedBy="mecanico") private Set<Asistencia> asistencias = new HashSet<>();
 	
-	@OneToMany(mappedBy="mecanico") private Set<Experto> expertos = new HashSet<Experto>();
+	@OneToMany(mappedBy="mecanico") private Set<Experto> expertos = new HashSet<>();
 	
 	
 	public Mecanico(String dni) {

@@ -28,7 +28,8 @@ public class ListHoursByMechanic implements Command {
 
         comprobar();
 
-        HorasAsistenciaDTO horas = Finder.asistencia.findHoursByMechanicA(dto.getId());
+        HorasAsistenciaDTO horas = Finder.asistencia
+                .findHoursByMechanicA(dto.getId());
 
         StringBuilder sb = new StringBuilder();
         sb.append("Total de horas de los cursos: ");
@@ -38,12 +39,14 @@ public class ListHoursByMechanic implements Command {
         sb.append(horas.getHorasCursadas());
         sb.append("\n");
 
-        List<HoraTipoDTO> horasTipo = Finder.asistencia.findHoursByMechanicB(dto.getId());
+        List<HoraTipoDTO> horasTipo = Finder.asistencia
+                .findHoursByMechanicB(dto.getId());
         for(HoraTipoDTO horaTipo : horasTipo){
             sb.append("Tipo ");
-            sb.append(Finder.tipoVehiculo.findById(horaTipo.getIdTipo()).getNombre());
+            sb.append(Finder.tipoVehiculo.findById(
+                    horaTipo.getIdTipo()).getNombre());
             sb.append(":\t");
-            sb.append(horaTipo.getHoras()+" horas\n");
+            sb.append(horaTipo.getHoras()).append(" horas\n");
         }
 
         return sb.toString();
@@ -52,7 +55,6 @@ public class ListHoursByMechanic implements Command {
     private void comprobar() throws BusinessException {
         mecanico = Finder.mecanico.findById(dto.getId());
         if(mecanico == null)
-            throw new BusinessException("no existe el mecánico.");
+            throw new BusinessException("No existe el mecánico.");
     }
-
 }

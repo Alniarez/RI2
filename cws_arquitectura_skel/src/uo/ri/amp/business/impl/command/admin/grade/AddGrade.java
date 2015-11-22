@@ -1,6 +1,5 @@
 package uo.ri.amp.business.impl.command.admin.grade;
 
-
 import uo.ri.amp.business.impl.command.Command;
 import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.CursoDTO;
@@ -28,12 +27,14 @@ public class AddGrade implements Command {
 
         comprobar();
 
-        Curso c = new Curso(curso.getCodigo(), curso.getNombre(), curso.getDescripcion(), curso.getHorasTotales(),
+        Curso c = new Curso(curso.getCodigo(), curso.getNombre(),
+                curso.getDescripcion(), curso.getHorasTotales(),
         tipoVehiculos,curso.getpHoras());
 
         Jpa.getManager().persist(c);
         for (int i = 0; i < tipoVehiculos.size(); i++) {
-            Jpa.getManager().persist(new ContenidoCurso(c, tipoVehiculos.get(i), curso.getpHoras().get(i)));
+            Jpa.getManager().persist(new ContenidoCurso(c, tipoVehiculos.get(i),
+                    curso.getpHoras().get(i)));
         }
         return null;
     }
@@ -60,6 +61,5 @@ public class AddGrade implements Command {
         }
         if(porcentajeAcumulado!= 100)
             throw new BusinessException("La suma de los porcetajes debe ser 100.");
-
     }
 }

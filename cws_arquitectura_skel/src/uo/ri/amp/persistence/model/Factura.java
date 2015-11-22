@@ -28,8 +28,8 @@ public class Factura {
 	
 	@Enumerated(EnumType.STRING) private FacturaStatus status = FacturaStatus.SIN_ABONAR;
 		
-	@OneToMany(mappedBy="factura") private Set<Averia> averias = new HashSet<Averia>();
-	@OneToMany(mappedBy="factura") private Set<Cargo> cargos = new HashSet<Cargo>();
+	@OneToMany(mappedBy="factura") private Set<Averia> averias = new HashSet<>();
+	@OneToMany(mappedBy="factura") private Set<Cargo> cargos = new HashSet<>();
 	
 	public Factura(Long numero) {
 		this(numero, new Date());

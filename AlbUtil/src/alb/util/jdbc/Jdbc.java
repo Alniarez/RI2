@@ -45,15 +45,15 @@ public class Jdbc {
 	}
 
 	protected static void close(ResultSet rs) {
-		if (rs != null) try { rs.close(); } catch(SQLException e) {};
+		if (rs != null) try { rs.close(); } catch(SQLException ignored) {}
 	}
 
 	public static void close(Statement st) {
-		if (st != null ) try { st.close(); } catch(SQLException e) {};
+		if (st != null ) try { st.close(); } catch(SQLException ignored) {}
 	}
 
 	public static void close(Connection c) {
-		if (c != null) try { c.close(); } catch(SQLException e) {};
+		if (c != null) try { c.close(); } catch(SQLException ignored) {}
 	}
 
 	public static Connection createThreadConnection() throws SQLException {
@@ -63,7 +63,7 @@ public class Jdbc {
 		return con;
 	}
 
-	private static ThreadLocal<Connection> threadConnection = new ThreadLocal<Connection>();
+	private static ThreadLocal<Connection> threadConnection = new ThreadLocal<>();
 
 	public static Connection getCurrentConnection() {
 		return threadConnection.get();

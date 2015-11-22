@@ -16,13 +16,13 @@ public class TipoVehiculo {
 	private String nombre;
 	private double precioHora;
 	
-	@OneToMany(mappedBy="tipo") private Set<Vehiculo> vehiculos = new HashSet<Vehiculo>();
+	@OneToMany(mappedBy="tipo") private Set<Vehiculo> vehiculos = new HashSet<>();
 	
 	private int horasMaestria;
 	
-	@OneToMany(mappedBy="tipoVehiculo") private Set<ContenidoCurso> contenidoCurso = new HashSet<ContenidoCurso>();
+	@OneToMany(mappedBy="tipoVehiculo") private Set<ContenidoCurso> contenidoCurso = new HashSet<>();
 	
-	@OneToMany(mappedBy="tipoVehiculo") private Set<Experto> expertos = new HashSet<Experto>();
+	@OneToMany(mappedBy="tipoVehiculo") private Set<Experto> expertos = new HashSet<>();
 	
 	public TipoVehiculo(String nombre) {
 		this.nombre = nombre;

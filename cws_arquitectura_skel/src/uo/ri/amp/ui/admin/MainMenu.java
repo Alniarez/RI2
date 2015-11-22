@@ -7,9 +7,9 @@ public class MainMenu extends BetterMenu {
     public MainMenu() {
         menuOptions = new Object[][] {
                 { "Administrador", null },
-                { "GestiÃ³n de cursos", 			    GradeMenu.class },
-                { "GestiÃ³n de asistencia",          AttendanceMenu.class},
-                { "GestiÃ³n de certificados", 		CertificateMenu.class },
+                { "Gestión de cursos", 			    GradeMenu.class },
+                { "Gestión de asistencia",          AttendanceMenu.class},
+                { "Gestión de certificados", 		CertificateMenu.class },
                 { "Listados",               	    ListMenu.class },
         };
     }

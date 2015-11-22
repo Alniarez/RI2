@@ -16,8 +16,7 @@ public class Lector {
 	private static Date parseDate(String date) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try {
-			Date d = sdf.parse(date);
-			return d;
+			return sdf.parse(date);
 		} catch (ParseException e) {
 			System.out.println("Fecha en formato inválido.");
 			return leerFecha("Vuelva a introducir la fecha (DD/MM/AAAA)");

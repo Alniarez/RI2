@@ -21,7 +21,8 @@ public class ListHoursByType implements Command {
 		String tipo = "";
 		for (HorasMecanicoTipoDTO dto : horas) {
 			Mecanico mecanico = Finder.mecanico.findById(dto.getIdMecanico());
-			TipoVehiculo tipoVehiculo = Finder.tipoVehiculo.findById(dto.getIdTipo());
+			TipoVehiculo tipoVehiculo = Finder.tipoVehiculo.findById(
+					dto.getIdTipo());
 			if (!tipo.equalsIgnoreCase(tipoVehiculo.getNombre())){
 				tipo = tipoVehiculo.getNombre();
 				sb.append(tipo);
@@ -38,5 +39,4 @@ public class ListHoursByType implements Command {
 		}
         return sb.toString();
 	}
-
 }

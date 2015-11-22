@@ -8,15 +8,13 @@ import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.CursoDTO;
 import uo.ri.amp.conf.ServiceFactory;
 
-import java.util.zip.CRC32;
-
 public class DeleteGradeAction  implements Action {
 
     @Override
     public void execute() throws BusinessException {
 
         // Pedir datos
-        String codigo = leerCadena("Código de curso");
+        String codigo = leerCadena("C�digo de curso");
 
         // Generar modelo
         CursoDTO curso = CursoDTO.create().setCodigo(codigo);

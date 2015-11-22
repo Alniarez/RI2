@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Embeddable
 public class Address implements Serializable{
 	
-	Address(){}
+	protected Address(){}
 
 	private String city;
 	private String street;
@@ -20,12 +20,15 @@ public class Address implements Serializable{
 		this.city = city;
 		this.zipcode = zipcode;
 	}
+	//@SuppressWarnings("JpaAttributeMemberSignatureInspection")
 	public String getStreet() {
 		return street;
 	}
+	//@SuppressWarnings("JpaAttributeMemberSignatureInspection")
 	public String getCity() {
 		return city;
 	}
+	//@SuppressWarnings("JpaAttributeMemberSignatureInspection")
 	public String getZipcode() {
 		return zipcode;
 	}

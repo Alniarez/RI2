@@ -7,7 +7,6 @@ import alb.util.menu.Action;
 import uo.ri.amp.common.dto.AsistenciaDTO;
 import uo.ri.amp.common.dto.CursoDTO;
 import uo.ri.amp.conf.ServiceFactory;
-import uo.ri.amp.persistence.model.Asistencia;
 
 /**
  * Created by Jorge.

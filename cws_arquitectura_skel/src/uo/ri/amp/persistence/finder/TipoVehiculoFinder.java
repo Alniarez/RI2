@@ -6,7 +6,7 @@ import uo.ri.amp.persistence.util.Jpa;
 import java.util.List;
 
 /**
- * Created by Jorge on 17/11/2015.
+ * Created by Jorge.
  */
 public class TipoVehiculoFinder {
 

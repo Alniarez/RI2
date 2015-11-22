@@ -22,7 +22,7 @@ public class Vehiculo {
 	@ManyToOne @JoinColumn(name = "CLIENTE_ID") private Cliente cliente;
 	@ManyToOne @JoinColumn(name = "TIPO_ID") private TipoVehiculo tipo;
 	
-	@OneToMany(mappedBy="vehiculo") private Set<Averia> averias = new HashSet<Averia>();
+	@OneToMany(mappedBy="vehiculo") private Set<Averia> averias = new HashSet<>();
 	
 	public Vehiculo(String matricula) {
 		

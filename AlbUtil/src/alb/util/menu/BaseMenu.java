@@ -105,7 +105,7 @@ public abstract class BaseMenu implements Action{
 
 	@SuppressWarnings("unchecked")
 	private void fillActions() {
-		actions = new ArrayList<Class<Action>>();
+		actions = new ArrayList<>();
 		
 		for(Object[] row : menuOptions) {
 			if (row[1] != null) {
@@ -117,11 +117,9 @@ public abstract class BaseMenu implements Action{
 	private Action createInstanceOf(Class<Action> clazz) {
 		try {
 			
-			return (Action) clazz.newInstance();
+			return clazz.newInstance();
 			
-		} catch (InstantiationException e) {
-			throw new RuntimeException(e);
-		} catch (IllegalAccessException e) {
+		} catch (InstantiationException | IllegalAccessException e) {
 			throw new RuntimeException(e);
 		}
 	}

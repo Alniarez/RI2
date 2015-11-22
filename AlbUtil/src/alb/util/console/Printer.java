@@ -31,7 +31,6 @@ public class Printer {
 
 	/**
 	 * Avisa de error irrecuperable en la interfaz del usuario
-	 * @param string
 	 * @param e
 	 */
 	public static void printRuntimeException(RuntimeException e) {

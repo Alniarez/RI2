@@ -6,7 +6,7 @@ import uo.ri.amp.ui.admin.action.grade.ListGradesAction;
 import uo.ri.amp.ui.admin.action.grade.UpdateGradeAction;
 import uo.ri.amp.common.util.BetterMenu;
 
-public class GradeMenu extends BetterMenu {
+class GradeMenu extends BetterMenu {
 
     public GradeMenu() {
         menuOptions = new Object[][] {

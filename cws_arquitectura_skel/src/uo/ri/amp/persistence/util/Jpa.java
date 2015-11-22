@@ -17,12 +17,12 @@ import org.xml.sax.SAXException;
 public class Jpa {
 
 	private static EntityManagerFactory emf = null;
-	private static ThreadLocal<EntityManager> emThread = new ThreadLocal<EntityManager>();
+	private static ThreadLocal<EntityManager> emThread = new ThreadLocal<>();
 
 	public static EntityManager createEntityManager() {
-		EntityManager entityManager = getEmf().createEntityManager();
-		emThread.set(entityManager);
-		return entityManager;
+			EntityManager entityManager = getEmf().createEntityManager();
+			emThread.set(entityManager);
+			return entityManager;
 	}
 
 	public static EntityManager getManager() {
@@ -49,9 +49,7 @@ public class Jpa {
 
 			return ((Element) nl.item(0)).getAttribute("name");
 
-		} catch (ParserConfigurationException e1) {
-			throw new RuntimeException(e1);
-		} catch (SAXException e1) {
+		} catch (ParserConfigurationException | SAXException e1) {
 			throw new RuntimeException(e1);
 		} catch (IOException e1) {
 			throw new RuntimeException(e1);

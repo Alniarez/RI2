@@ -19,7 +19,7 @@ public class ListGrades implements Command {
         List<Curso> cursos = Finder.curso.findAll();
 
         TableBuilder tb = new TableBuilder();
-        tb.addRow("Código", "Nombre", "Númedo de horas", "Descripción");
+        tb.addRow("Código", "Nombre", "Número de horas", "Descripción");
         tb.addRow("----", "----", "----", "----");
         for(Curso c : cursos)
             tb.addRow(

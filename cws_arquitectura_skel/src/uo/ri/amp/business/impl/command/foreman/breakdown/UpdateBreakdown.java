@@ -15,7 +15,6 @@ public class UpdateBreakdown implements Command {
 
 	private final AveriaDTO dto;
 	private Averia averia;
-	private Vehiculo vehiculo;
 
 	public UpdateBreakdown(AveriaDTO averia) {
 		this.dto = averia;
@@ -26,19 +25,17 @@ public class UpdateBreakdown implements Command {
 		comprobar();
 
         averia.setDescripcion(dto.getDescripcion());
-
 		Jpa.getManager().merge(averia);
 
 		return null;
 	}
 
 	private void comprobar() throws BusinessException {
-		vehiculo = Finder.vehiculo.findByMatricula(dto.getMatricula());
-		if(vehiculo==null)
+		Vehiculo vehiculo = Finder.vehiculo.findByMatricula(dto.getMatricula());
+		if(vehiculo ==null)
 			throw new BusinessException("No existe el vehículo.");
 		averia = Finder.averia.findOne(dto);
 		if(averia == null)
 			throw new BusinessException("La averia que quiere modificar no existe.");
 	}
-
 }

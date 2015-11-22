@@ -8,7 +8,7 @@ import uo.ri.amp.ui.foreman.action.ListBreakdownAction;
 import uo.ri.amp.common.util.BetterMenu;
 
 
-public class ListMenu extends BetterMenu {
+class ListMenu extends BetterMenu {
 
     public ListMenu() {
         menuOptions = new Object[][] {

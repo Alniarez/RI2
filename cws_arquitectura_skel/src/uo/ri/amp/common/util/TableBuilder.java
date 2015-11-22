@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class TableBuilder {
 
-    List<String[]> rows = new LinkedList<String[]>();
+    private List<String[]> rows = new LinkedList<>();
 
     public void addRow(String... cols) {
         rows.add(cols);

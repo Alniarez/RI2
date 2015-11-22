@@ -5,6 +5,7 @@ import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.AveriaDTO;
 import uo.ri.amp.persistence.Finder;
 import uo.ri.amp.persistence.model.Averia;
+import uo.ri.amp.persistence.model.Vehiculo;
 import uo.ri.amp.persistence.util.Jpa;
 
 /**
@@ -14,6 +15,7 @@ public class RemoveBreakdown implements Command {
 
 	private final AveriaDTO dto;
     private Averia averia;
+    private Vehiculo vehiculo;
 
 	public RemoveBreakdown(AveriaDTO averia) {
 		this.dto = averia;
@@ -24,6 +26,7 @@ public class RemoveBreakdown implements Command {
 		comprobar();
 
         Jpa.getManager().remove(averia);
+		vehiculo.removeAveria(averia);
 
 		return null;
 	}
@@ -32,6 +35,7 @@ public class RemoveBreakdown implements Command {
         averia = Finder.averia.findOne(dto);
         if(averia == null)
             throw new BusinessException("No existe la avería");
+        vehiculo = averia.getVehiculo();
     }
 
 }

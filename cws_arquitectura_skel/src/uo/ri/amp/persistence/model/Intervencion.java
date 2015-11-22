@@ -19,7 +19,7 @@ public class Intervencion {
 	@Id @ManyToOne @JoinColumn(name = "AVERIA_ID") private Averia averia;
 	@Id @ManyToOne @JoinColumn(name = "MECANICO_ID") private Mecanico mecanico;
 	
-	@OneToMany(mappedBy="intervencion") private Set<Sustitucion> sustituciones = new HashSet<Sustitucion>();
+	@OneToMany(mappedBy="intervencion") private Set<Sustitucion> sustituciones = new HashSet<>();
 
 	public Intervencion(Mecanico mecanico, Averia averia) {
 		Association.Intervenir.link(mecanico,this,averia);

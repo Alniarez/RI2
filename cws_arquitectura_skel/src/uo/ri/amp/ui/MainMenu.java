@@ -5,7 +5,7 @@ import uo.ri.amp.common.util.BetterMenu;
 /**
  * Created by Jorge.
  */
-public class MainMenu extends BetterMenu {
+class MainMenu extends BetterMenu {
 
     public MainMenu() {
         menuOptions = new Object[][] {

@@ -12,7 +12,7 @@ import uo.ri.amp.common.util.TableBuilder;
 /**
  * Created by Jorge.
  */
-public class ForemanServiceImpl implements ForemanService{
+public class ForemanServiceImpl implements ForemanService {
 
     CommandExecutor executor = new CommandExecutor();
 
@@ -37,12 +37,14 @@ public class ForemanServiceImpl implements ForemanService{
     }
 
     @Override
-    public TableBuilder listCompetentMechanics(VehiculoDTO vehiculo) throws BusinessException {
+    public TableBuilder listCompetentMechanics(VehiculoDTO vehiculo)
+            throws BusinessException {
         return (TableBuilder) executor.execute(new ListCompetentMechanics(vehiculo));
     }
 
     @Override
-    public TableBuilder listBreakdownHistory(VehiculoDTO vehiculo) throws BusinessException {
+    public TableBuilder listBreakdownHistory(VehiculoDTO vehiculo)
+            throws BusinessException {
         return (TableBuilder) executor.execute(new ListBreakdownHistory(vehiculo));
     }
 }

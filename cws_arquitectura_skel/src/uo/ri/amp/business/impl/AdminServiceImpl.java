@@ -21,11 +21,11 @@ import uo.ri.amp.common.util.TableBuilder;
 
 
 /**
- * Created by Jorge on 17/11/2015.
+ * Created by Jorge.
  */
 public class AdminServiceImpl implements AdminService{
 
-    CommandExecutor executor = new CommandExecutor();
+    private CommandExecutor executor = new CommandExecutor();
 
     @Override
     public void addGrade(CursoDTO curso) throws BusinessException {

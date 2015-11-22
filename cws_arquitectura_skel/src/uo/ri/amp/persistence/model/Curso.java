@@ -18,8 +18,8 @@ public class Curso {
 	private int nHoras;
 
 
-	@OneToMany(mappedBy="curso") private Set<ContenidoCurso> contenidoCurso = new HashSet<ContenidoCurso>();
-	@OneToMany(mappedBy="curso") private Set<Asistencia> asistencias = new HashSet<Asistencia>();
+	@OneToMany(mappedBy="curso") private Set<ContenidoCurso> contenidoCurso = new HashSet<>();
+	@OneToMany(mappedBy="curso") private Set<Asistencia> asistencias = new HashSet<>();
 
     protected Curso(){}
 	

@@ -1,6 +1,5 @@
 package uo.ri.amp.business.impl.command.admin.grade;
 
-
 import uo.ri.amp.business.impl.command.Command;
 import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.CursoDTO;
@@ -28,7 +27,8 @@ public class DeleteGrade implements Command {
             throw new BusinessException("No existe el curso.");
 
         if(curso.getAsistencias().size()!=0)
-            throw new BusinessException("No puede elimiar el curso si tiene asistencias.");
+            throw new BusinessException(
+                    "No puede elimiar el curso si tiene asistencias.");
 
         for(ContenidoCurso cc : curso.getContenidoCurso())
             Jpa.getManager().remove(cc);
@@ -37,5 +37,4 @@ public class DeleteGrade implements Command {
 
         return null;
 	}
-
 }

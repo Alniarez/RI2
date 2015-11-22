@@ -1,6 +1,5 @@
 package uo.ri.amp.business.impl.command.admin.attendance;
 
-
 import uo.ri.amp.business.impl.command.Command;
 import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.common.dto.AsistenciaDTO;
@@ -16,8 +15,6 @@ import uo.ri.amp.persistence.util.Jpa;
 public class UpdateAttendance  implements Command {
 
 	private final AsistenciaDTO dto;
-    private Mecanico mecanico;
-    private Curso curso;
     private Asistencia asistencia;
 
 	public UpdateAttendance(AsistenciaDTO asistencia) {
@@ -41,28 +38,30 @@ public class UpdateAttendance  implements Command {
 
     private void comprobar() throws BusinessException {
         //Existe el mecanico
-        mecanico = Finder.mecanico.findById(dto.getMecanico().getId());
+        Mecanico mecanico = Finder.mecanico.findById(dto.getMecanico().getId());
         if(mecanico == null)
             throw new BusinessException("No existe el mecánico.");
 
         //Existe el curso
-        curso = Finder.curso.findByCodigo(dto.getCurso().getCodigo());
+        Curso curso = Finder.curso.findByCodigo(dto.getCurso().getCodigo());
         if(curso == null)
             throw new BusinessException("No existe el curso.");
 
         //Existe la asistencia
-        asistencia = Finder.asistencia.findOne(dto.getCurso().getCodigo(),dto.getMecanico().getId());
+        asistencia = Finder.asistencia.findOne(dto.getCurso().getCodigo(),
+                dto.getMecanico().getId());
         if(asistencia == null)
-            throw new BusinessException("La asistencia no existe. Utilice el menú adecuado para crearla.");
+            throw new BusinessException("La asistencia no existe. " +
+                    "Utilice el menú adecuado para crearla.");
 
         //Apto correcto
         if(dto.getPorcentaje() <= 85 && dto.getApto().equals("APTO"))
-            throw new BusinessException("Debe tener una asistencia de de 85% para ser apto.");
+            throw new BusinessException("Debe tener una asistencia " +
+                    "de de 85% para ser apto.");
 
         //Fechas bien
         if(dto.getFechaIn().before(dto.getFechaOut()))
-            throw new BusinessException("La fecha de finalización no puede ser posterior a la de inicio.");
-
+            throw new BusinessException("La fecha de finalización " +
+                    "no puede ser posterior a la de inicio.");
     }
-
 }

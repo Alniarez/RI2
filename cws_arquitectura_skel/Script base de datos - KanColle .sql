@@ -1,19 +1,24 @@
---	Ejecutar para poner la base de datos en un estado inicial estable.
---	Sólo existen entidades para las tablas que intervienen en la apliación.
---	
---	Existen:
---		Clientes
---		TiposVehiculo
---		Vehiculos
---		Mecanicos
---		Cursos
---		Asistencias
---		Expertos
---		
---	* Algunos de los expertos no están certificados. *
+﻿--
+-- La base de datos presente en el fichero comprimido es la base de datos tras crearla y ejecutar este script.
+--
+-- Para colver poner la base de datos en un estado estable y probar su funcionalidad hay ejecutar este Script.
+-- Para colver crear la base de datos hay usar <property name="hibernate.hbm2ddl.auto" value="create" /> despues de borrarla.
+-- 
+-- Sólo están los datos necesarios para los casos de uso de la ampliación.
+-- 		- Clientes
+-- 		- Tipos de vehículos
+--		- Vehículos
+--		- Cursos y sus contenidos
+--		- Asistencias
+--		- Expertos*
+--		- Averías**
+--
+--		*	Algunos mecanicos son expertos pero no tiene el certificado (no están en la tabla TEXPERTOS)
+--		**	Algunas ya asignadas
+--
+--	Datos basados en el juego de navegador - Kantai Collection (艦隊これくしょん) -
 --
 
--- Limpiar
 DELETE FROM TASISTENCIAS;
 DELETE FROM TCONTENIDOCURSO;
 DELETE FROM TCURSOS;
@@ -185,8 +190,17 @@ INSERT INTO TASISTENCIAS VALUES(12,3,'NO_APTO','1918-05-01','1918-02-02',80);
 INSERT INTO TASISTENCIAS VALUES(12,4,'APTO','1918-05-01','1918-02-02',100);
 INSERT INTO TASISTENCIAS VALUES(12,5,'NO_APTO','1919-05-01','1919-02-02',100);
 INSERT INTO TASISTENCIAS VALUES(12,6,'NO_APTO','1920-05-01','1920-02-02',80);
+--Expertos
 INSERT INTO TEXPERTOS VALUES(1,2,'1924-11-22');
 INSERT INTO TEXPERTOS VALUES(3,1,'1924-11-22');
 INSERT INTO TEXPERTOS VALUES(4,1,'1924-11-22');
 INSERT INTO TEXPERTOS VALUES(7,2,'1924-11-22');
 INSERT INTO TEXPERTOS VALUES(8,2,'1924-11-22');
+--Averías
+INSERT INTO TAVERIAS VALUES(4,'La puerta de los baños tiene el pestillo roto.','1924-08-03',0.0E0,'ASIGNADA',NULL,4,1);
+INSERT INTO TAVERIAS VALUES(5,'Hay un exceso de gatos.','1924-04-01',0.0E0,'ASIGNADA',NULL,3,2);
+INSERT INTO TAVERIAS VALUES(6,'No arranca bien.','1925-01-08',0.0E0,'ABIERTA',NULL,NULL,21);
+INSERT INTO TAVERIAS VALUES(7,'Tiene las bombillas fundidas.','1924-11-01',0.0E0,'ABIERTA',NULL,NULL,17);
+INSERT INTO TAVERIAS VALUES(8,'Cambio de aceite','1924-01-12',0.0E0,'ABIERTA',NULL,NULL,15);
+INSERT INTO TAVERIAS VALUES(9,'Hay una fuga de agua.','1924-01-01',0.0E0,'ABIERTA',NULL,NULL,13);
+INSERT INTO TAVERIAS VALUES(10,'Está en el fondo del mar','1924-06-06',0.0E0,'ABIERTA',NULL,NULL,1);

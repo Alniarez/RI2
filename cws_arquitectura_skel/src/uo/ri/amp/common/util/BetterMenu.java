@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Jorge on 17/11/2015.
+ * Created by Jorge.
  */
 public class BetterMenu extends BaseMenu {
 
@@ -106,7 +106,7 @@ public class BetterMenu extends BaseMenu {
 
     @SuppressWarnings("unchecked")
     private void fillActions() {
-        actions = new ArrayList<Class<Action>>();
+        actions = new ArrayList<>();
 
         for(Object[] row : menuOptions) {
             if (row[1] != null) {
@@ -118,11 +118,9 @@ public class BetterMenu extends BaseMenu {
     private Action createInstanceOf(Class<Action> clazz) {
         try {
 
-            return (Action) clazz.newInstance();
+            return clazz.newInstance();
 
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }

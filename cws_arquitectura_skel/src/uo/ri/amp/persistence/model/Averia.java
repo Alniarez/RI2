@@ -30,7 +30,7 @@ public class Averia {
 	@JoinColumn(name = "VEHICULO_ID") @ManyToOne private Vehiculo vehiculo;
 
 	@OneToMany(mappedBy="averia")
-	private Set<Intervencion> intervenciones = new HashSet<Intervencion>();
+	private Set<Intervencion> intervenciones = new HashSet<>();
 	
 	public Averia(Vehiculo vehiculo)
 	{

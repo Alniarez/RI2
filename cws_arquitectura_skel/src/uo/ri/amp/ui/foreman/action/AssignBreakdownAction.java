@@ -11,8 +11,6 @@ import alb.util.menu.Action;
 import uo.ri.amp.common.dto.AveriaDTO;
 import uo.ri.amp.common.dto.VehiculoDTO;
 import uo.ri.amp.conf.ServiceFactory;
-import uo.ri.amp.persistence.model.Vehiculo;
-
 /**
  * Created by Jorge.
  */
@@ -28,7 +26,7 @@ public class AssignBreakdownAction implements Action {
         VehiculoDTO vehiculoDTO = VehiculoDTO.create().setMatricula(matricula);
 
         if(leerCadena("¿Desea ver la lista de mecánicos? (s/n)").equalsIgnoreCase("s"))
-        	ServiceFactory.getForemanService().listCompetentMechanics(vehiculoDTO);
+        	println(ServiceFactory.getForemanService().listCompetentMechanics(vehiculoDTO));
         long idMecanico = leerLong("ID de mecánico");
 
         // Generar modelo

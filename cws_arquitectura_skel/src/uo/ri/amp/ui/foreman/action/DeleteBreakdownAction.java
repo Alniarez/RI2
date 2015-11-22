@@ -1,10 +1,8 @@
 package uo.ri.amp.ui.foreman.action;
 
 import alb.util.menu.Action;
-import javafx.animation.SequentialTransition;
 import uo.ri.amp.common.dto.AveriaDTO;
 import uo.ri.amp.conf.ServiceFactory;
-import uo.ri.amp.persistence.model.Averia;
 
 import java.util.Date;
 

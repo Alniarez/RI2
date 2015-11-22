@@ -22,7 +22,7 @@ public abstract class MedioPago {
 	
 	@ManyToOne protected Cliente cliente;
 
-	@OneToMany(mappedBy="medioPago") private Set<Cargo> cargos = new HashSet<Cargo>();
+	@OneToMany(mappedBy="medioPago") private Set<Cargo> cargos = new HashSet<>();
 	
 	public MedioPago(double acumulado) {
 		

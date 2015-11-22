@@ -8,15 +8,12 @@ import uo.ri.amp.persistence.model.Averia;
 import uo.ri.amp.persistence.model.Vehiculo;
 import uo.ri.amp.persistence.util.Jpa;
 
-import java.util.Date;
-
 /**
  * Created by Jorge.
  */
 public class AddBreakdown implements Command {
 
 	private final AveriaDTO dto;
-    private Averia averia;
     private Vehiculo vehiculo;
 
 	public AddBreakdown(AveriaDTO averia) {
@@ -35,7 +32,7 @@ public class AddBreakdown implements Command {
         vehiculo = Finder.vehiculo.findByMatricula(dto.getMatricula());
         if(vehiculo==null)
             throw new BusinessException("No existe el vehículo.");
-        averia = Finder.averia.findOne(dto);
+        Averia averia = Finder.averia.findOne(dto);
         if(averia != null)
             throw new BusinessException("La averia que quiere crear ya existe.");
     }
