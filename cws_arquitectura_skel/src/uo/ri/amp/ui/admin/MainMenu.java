@@ -1,6 +1,6 @@
 package uo.ri.amp.ui.admin;
 
-import uo.ri.amp.util.BetterMenu;
+import uo.ri.amp.common.util.BetterMenu;
 
 public class MainMenu extends BetterMenu {
 

@@ -1,12 +1,13 @@
 package uo.ri.amp.ui.foreman.action;
 
 import alb.util.menu.Action;
-import uo.ri.amp.model.Averia;
-import uo.ri.amp.model.Vehiculo;
+import uo.ri.amp.common.dto.AveriaDTO;
+import uo.ri.amp.conf.ServiceFactory;
+
 import java.util.Date;
 
 import static alb.util.console.Console.println;
-import static uo.ri.amp.util.Lector.*;
+import static uo.ri.amp.common.util.Lector.*;
 
 /**
  * Created by Jorge.
@@ -18,14 +19,17 @@ public class UpdateBreakdownAction implements Action {
 
         // Pedir datos
         String matricula = leerCadena("Matricula del coche");
-        String descripcion = leerCadena("DescripciÛn de la averÌa");
+        String descripcion = leerCadena("Descripci√≥n de la aver√≠a");
         Date fecha = leerFecha("Fecha de entrada (dd/mm/yyyy)");
 
-               // Generar modelo
-       
+        // Generar modelo
+        AveriaDTO dto = AveriaDTO.create()
+                .setMatricula(matricula)
+                .setDescripcion(descripcion)
+                .setFechaEntrada(fecha);
 
         //Procesar
-
+        ServiceFactory.getForemanService().updateBreakdown(dto);
 
         //Mostrar resultado
         println("Se ha modificado la aver√≠a correctamente.");

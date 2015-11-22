@@ -16,14 +16,14 @@ public class Printer {
 	}
 
 	/**
-	 * Avisa de error lógico en la ejecución, muy probablemente por 
+	 * Avisa de error lï¿½gico en la ejecuciï¿½n, muy probablemente por 
 	 * equivocacion del usuario o por circunstancias que han cambiado 
 	 * durante el "think time" del usuario (control optimista y eso...)
 	 * 
 	 * @param e
 	 */
 	public static void printBusinessException(Exception e) {
-		//TODO: Hacer esto un poco más curioso según lo pida la interfaz
+		//Hacer esto un poco mï¿½s curioso segï¿½n lo pida la interfaz
 		
 		con.println("Ha ocurrido un problema procesando su opcion:");
 		con.println("\t- " + e.getLocalizedMessage());

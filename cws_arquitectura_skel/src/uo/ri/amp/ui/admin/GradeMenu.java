@@ -4,7 +4,7 @@ import uo.ri.amp.ui.admin.action.grade.AddGradeAction;
 import uo.ri.amp.ui.admin.action.grade.DeleteGradeAction;
 import uo.ri.amp.ui.admin.action.grade.ListGradesAction;
 import uo.ri.amp.ui.admin.action.grade.UpdateGradeAction;
-import uo.ri.amp.util.BetterMenu;
+import uo.ri.amp.common.util.BetterMenu;
 
 public class GradeMenu extends BetterMenu {
 

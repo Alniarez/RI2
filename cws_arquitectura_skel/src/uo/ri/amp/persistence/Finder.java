@@ -1,9 +1,7 @@
 package uo.ri.amp.persistence;
 
-import uo.ri.amp.persistence.finder.AsistenciaFinder;
-import uo.ri.amp.persistence.finder.ContenidoCursoFinder;
-import uo.ri.amp.persistence.finder.CursoFinder;
-import uo.ri.amp.persistence.finder.ExpertoFinder;
+import uo.ri.amp.persistence.finder.*;
+import uo.ri.amp.persistence.model.Vehiculo;
 
 public class Finder {
 
@@ -15,4 +13,11 @@ public class Finder {
 
     public static AsistenciaFinder asistencia = new AsistenciaFinder();
 
+    public static TipoVehiculoFinder tipoVehiculo = new TipoVehiculoFinder();
+
+    public static MecanicoFinder mecanico = new MecanicoFinder();
+
+    public static AveriaFinder averia = new AveriaFinder();
+
+    public static VehiculoFinder vehiculo = new VehiculoFinder();
 }

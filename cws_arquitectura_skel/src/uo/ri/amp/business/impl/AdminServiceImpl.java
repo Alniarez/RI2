@@ -2,12 +2,22 @@ package uo.ri.amp.business.impl;
 
 import uo.ri.amp.business.AdminService;
 import uo.ri.amp.business.impl.command.CommandExecutor;
+import uo.ri.amp.business.impl.command.admin.attendance.AddAttendance;
+import uo.ri.amp.business.impl.command.admin.attendance.DeleteAttendance;
+import uo.ri.amp.business.impl.command.admin.attendance.ListAttendance;
+import uo.ri.amp.business.impl.command.admin.attendance.UpdateAttendance;
+import uo.ri.amp.business.impl.command.admin.certificate.GenerateCertificates;
 import uo.ri.amp.business.impl.command.admin.grade.AddGrade;
+import uo.ri.amp.business.impl.command.admin.grade.DeleteGrade;
+import uo.ri.amp.business.impl.command.admin.grade.ListGrades;
+import uo.ri.amp.business.impl.command.admin.grade.UpdateGrade;
+import uo.ri.amp.business.impl.command.admin.list.ListHoursByMechanic;
+import uo.ri.amp.business.impl.command.admin.list.ListHoursByType;
 import uo.ri.amp.common.BusinessException;
-import uo.ri.amp.model.Asistencia;
-import uo.ri.amp.model.Curso;
-import uo.ri.amp.model.Mecanico;
-import uo.ri.amp.util.TableBuilder;
+import uo.ri.amp.common.dto.AsistenciaDTO;
+import uo.ri.amp.common.dto.CursoDTO;
+import uo.ri.amp.common.dto.MecanicoDTO;
+import uo.ri.amp.common.util.TableBuilder;
 
 
 /**
@@ -18,57 +28,57 @@ public class AdminServiceImpl implements AdminService{
     CommandExecutor executor = new CommandExecutor();
 
     @Override
-    public void addGrade(Curso curso) throws BusinessException {
-        executor.execute(new AddGrade());
+    public void addGrade(CursoDTO curso) throws BusinessException {
+        executor.execute(new AddGrade(curso));
     }
 
     @Override
-    public void deleteGrade(Long idCurso) throws BusinessException {
-
+    public void deleteGrade(CursoDTO curso) throws BusinessException {
+        executor.execute(new DeleteGrade(curso));
     }
 
     @Override
-    public void updateGrade(Curso curso) throws BusinessException {
-
+    public void updateGrade(CursoDTO curso) throws BusinessException {
+        executor.execute(new UpdateGrade(curso));
     }
 
     @Override
     public TableBuilder listGrades() throws BusinessException {
-        return null;
+        return (TableBuilder) executor.execute(new ListGrades());
     }
 
     @Override
-    public void addAttendance(Asistencia asistencia) throws BusinessException {
-
+    public void addAttendance(AsistenciaDTO asistencia) throws BusinessException {
+        executor.execute(new AddAttendance(asistencia));
     }
 
     @Override
-    public void deleteAttendance(Long idCurso, Long idMecanico) throws BusinessException {
-
+    public void deleteAttendance(AsistenciaDTO asistencia) throws BusinessException {
+        executor.execute(new DeleteAttendance(asistencia));
     }
 
     @Override
-    public void updateAttendance(Asistencia asistencia) throws BusinessException {
-
+    public void updateAttendance(AsistenciaDTO asistencia) throws BusinessException {
+        executor.execute(new UpdateAttendance(asistencia));
     }
 
     @Override
-    public TableBuilder listAttendance(Long idCurso) throws BusinessException {
-        return null;
+    public TableBuilder listAttendance(AsistenciaDTO asistenciaDTO) throws BusinessException {
+        return (TableBuilder) executor.execute(new ListAttendance(asistenciaDTO));
     }
 
     @Override
-    public void generateCertificates() throws BusinessException {
-
+    public String generateCertificates() throws BusinessException {
+        return (String) executor.execute(new GenerateCertificates());
     }
 
     @Override
     public String listHoursByType() throws BusinessException {
-        return null;
+        return (String) executor.execute(new ListHoursByType());
     }
 
     @Override
-    public String listHoursByMechanic(Mecanico mecanico) throws BusinessException {
-        return null;
+    public String listHoursByMechanic(MecanicoDTO mecanico) throws BusinessException {
+        return (String) executor.execute(new ListHoursByMechanic(mecanico));
     }
 }

@@ -1,7 +1,7 @@
 package uo.ri.amp.ui.admin;
 
 import uo.ri.amp.ui.admin.action.certificate.GenerateCertificatesAction;
-import uo.ri.amp.util.BetterMenu;
+import uo.ri.amp.common.util.BetterMenu;
 
 public class CertificateMenu  extends BetterMenu {
 

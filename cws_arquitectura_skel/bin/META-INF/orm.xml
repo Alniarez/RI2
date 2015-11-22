@@ -1,31 +1,167 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entity-mappings 
-	xmlns="http://java.sun.com/xml/ns/persistence/orm" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
-  	version="2.0">
+<entity-mappings
+        xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+        version="2.0">
 
-    <!-- Curso queries -->
+    <named-query name="Cosa">
+        <query>select sum(a.curso.nHoras), sum(a.curso.nHoras*a.porcentaje) from Asistencia a where a.mecanico.id = :id</query>
+    </named-query>
+
+    <!-- Curso -->
     <named-query name="Curso.findAll">
         <query>select c from Curso c</query>
     </named-query>
 
     <named-query name="Curso.findByCodigo">
-        <query>select c from Curso c where c.codigo= :codigo</query>
+        <query>select c from Curso c left join fetch c.asistencias where c.codigo = :codigo</query>
     </named-query>
 
-<!-- 
-	<named-query name="findItemsOnSaleByCategoryId">
-		<query>
-			<![CDATA[
-			select i 
-				from Item i join i.categories c
-				where c.id = ?2
-					and i.startDate <= ?1
-					and i.endDate >= ?1 
-			]]>
-		</query>
-	</named-query>
- -->		
+    <named-query name="Curso.findById">
+        <query>select c from Curso c where c.id = :id</query>
+    </named-query>
+
+    <!-- Contenido Curso -->
+    <named-query name="ContenidoCurso.findByCursoId">
+        <query>select cc from ContenidoCurso cc where cc.curso.id = :id</query>
+    </named-query>
+
+    <!-- Asistencia -->
+    <named-query name="Asistencia.findAll">
+        <query>select a from Asistencia a</query>
+    </named-query>
+
+    <named-query name="Asistencia.finOne">
+        <query>select a from Asistencia a where a.curso.codigo = :codigo and a.mecanico.id = :idMecanico</query>
+    </named-query>
+
+    <named-query name="Asistencia.findbyCurso">
+        <query>select a from Asistencia a where a.curso.codigo = :codigo order by a.fechaFin</query>
+    </named-query>
+
+
+    <named-query name="Asistencia.hourByMechanicA">
+        <query>
+            select
+                sum((a.curso.nHoras*a.porcentaje)/100) as horasCursadas,
+                sum(a.curso.nHoras) as horasTotales
+            from
+                Asistencia a
+            where
+                a.mecanico.id= :idMecanico
+            group by
+                a.mecanico.id
+        </query>
+    </named-query>
+
+    <named-query name="Asistencia.hourByMechanicB">
+        <query>
+            select
+                sum((cc.porcentaje*c.nHoras*a.porcentaje)/10000),
+                cc.tipoVehiculo.id
+            from
+                Curso c
+                join c.contenidoCurso cc
+                join c.asistencias a
+            where
+                a.mecanico.id = :idMecanico
+            group by
+                cc.tipoVehiculo.id
+            order by
+                cc.tipoVehiculo.id
+        </query>
+    </named-query>
+
+    <named-query name="Asistencia.hoursByType">
+        <query>
+            select
+                cc.tipoVehiculo.id,
+                a.mecanico.id,
+                sum((cc.porcentaje*c.nHoras*a.porcentaje)/10000) as horas
+            from
+                Curso c join
+                c.contenidoCurso cc join
+                c.asistencias a
+            where
+                a.apto = 'APTO'
+            group by
+                cc.tipoVehiculo.id,
+                a.mecanico.id
+            order by
+                cc.tipoVehiculo.id
+        </query>
+    </named-query>
+
+    <!-- TipoVehiculo -->
+    <named-query name="TipoVehiculo.findByNombre">
+        <query>select t from TipoVehiculo t where t.nombre = :nombre</query>
+    </named-query>
+
+    <named-query name="TipoVehiculo.findById">
+        <query>select t from TipoVehiculo t where t.id = :id</query>
+    </named-query>
+
+    <!-- Mecanicos -->
+    <named-query name="Mecanicos.findById">
+        <query>select m from Mecanico m left join fetch m.asistencias where m.id = :id</query>
+    </named-query>
+
+    <named-query name="Mecanicos.findExpertosByIdTipoVehiculo">
+        <query>select m from Experto e join e.mecanico m where e.tipoVehiculo.id = :id</query>
+    </named-query>
+
+    <!-- Expertos -->
+    <named-query name="Experto.ExpertosSinCertificar">
+        <query>select distinct
+            o.tipoVehiculo.id,
+            a.mecanico.id
+            from
+            Curso c join
+            c.contenidoCurso o
+            join c.asistencias a
+            where
+            a.apto='APTO' and
+            ( select
+                sum( ( cc.nHoras * aa.porcentaje * oo.porcentaje ) / 10000 )
+              from
+                Curso cc join
+                cc.contenidoCurso oo join
+                cc.asistencias aa
+            where
+                a.mecanico.id = aa.mecanico.id and
+                oo.tipoVehiculo.id = o.tipoVehiculo.id
+            )
+            >=
+            ( select
+                t.horasMaestria
+              from
+                TipoVehiculo t
+              where
+                t.id = o.tipoVehiculo.id
+            ) and
+            a.mecanico.id not in (  select
+                                        e.mecanico.id
+                                    from
+                                        Experto e
+                                    where
+                                        e.tipoVehiculo.id = o.tipoVehiculo.id
+                                )
+        </query>
+    </named-query>
+
+    <!--
+        <named-query name="findItemsOnSaleByCategoryId">
+            <query>
+                <![CDATA[
+                select i
+                    from Item i join i.categories c
+                    where c.id = ?2
+                        and i.startDate <= ?1
+                        and i.endDate >= ?1
+                ]]>
+            </query>
+        </named-query>
+     -->
 
 </entity-mappings>

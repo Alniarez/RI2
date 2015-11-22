@@ -3,7 +3,6 @@ package uo.ri.amp.business.impl.command;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import uo.ri.amp.business.impl.Command;
 import uo.ri.amp.common.BusinessException;
 import uo.ri.amp.persistence.util.Jpa;
 

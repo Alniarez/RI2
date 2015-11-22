@@ -1,7 +1,7 @@
 package uo.ri.amp.ui.foreman;
 
 import uo.ri.amp.ui.foreman.action.*;
-import uo.ri.amp.util.BetterMenu;
+import uo.ri.amp.common.util.BetterMenu;
 
 /**
  * Created by Jorge.

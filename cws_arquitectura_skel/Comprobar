@@ -1,0 +1,57 @@
+ADMIN
+	Curso
+		Crear 			1
+			No exista curso
+			debe existir los tipos
+			los porcentajes deben sumar 100
+			horas > 0
+		Borrar 			2
+			debe existir curso
+			no debe tener asistencias
+		Listar			3
+		Actualizar		4
+			existe curso
+			debe existir los tipos
+			los porcentajes deben sumar 100
+			horas > 0
+	Asistencia
+		crear			5
+			no debe existir asistencia
+			debe existir curso
+			debe existir mecanico
+			apso solo si porcentaje > 85
+		borrar			6
+			debe existir curso
+			debe existir mecanico
+		listar			7
+			debe existir curso
+		actualizar		8
+			debe existir asistencia
+			debe existir curso
+			debe existir mecanico
+			apso solo si porcentaje > 85
+	certificado
+		generar			9
+			solo cuando horas cursadas > horas maestria
+	listar
+		horas mecanico	10
+			debe existir mecanico
+		horas por tipo	11
+Foreman
+	Avería
+		crear			12
+			no existe averia
+			debe existir vehiculo
+		borrar			13
+			exista averia
+		modificar		14
+			existe averia
+			debe existir vehiculo
+		asignar			15
+			debe existir averia
+			debe existir mecanico
+			mecanico experto
+		listar			16
+			debe existir vehiuclo
+		
+

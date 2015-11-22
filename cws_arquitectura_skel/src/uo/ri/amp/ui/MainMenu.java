@@ -1,6 +1,6 @@
 package uo.ri.amp.ui;
 
-import uo.ri.amp.util.BetterMenu;
+import uo.ri.amp.common.util.BetterMenu;
 
 /**
  * Created by Jorge.
